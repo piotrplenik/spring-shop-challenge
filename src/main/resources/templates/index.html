@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shop - programming assignment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div id="available">
+    <p>Currently available in out shop:</p>
+    <ul data-th-each="item: ${items}">
+        <li>
+            <span class="item-name" th:text="${item.name}" />:
+            <span class="item-quantity" th:text="${item.quantity}" />
+        </li>
+    </ul>
+</div>
+
+<form id="cart" action="#" th:action="@{/}" th:object="${checkout}" method="post">
+    Your shopping:
+    <fieldset th:each="item, stat : ${items}" th:if="${item.quantity} > 0">
+        <span th:text="${item.name}" />
+        <input type="number" th:field="*{items[__${stat.index}__].quantity}" />
+        <span th:if="${#fields.hasErrors('items[__${stat.index}__].quantity')}"
+              th:errors="*{items[__${stat.index}__].quantity}" />
+        <span th:if="${#fields.hasErrors('items[__${stat.index}__].quantityCorrect')}"
+              th:errors="*{items[__${stat.index}__].quantityCorrect}" />
+    </fieldset>
+
+    <input type="submit" value="Buy!" />
+</form>
+
+</body>
+</html>

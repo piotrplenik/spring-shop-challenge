@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shop - programming assignment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div id="summary">
+    <p>You bought:</p>
+    <ul th:each="item: ${checkout.items}">
+        <li>
+            <span class="item-name" th:text="${item.item.name}" />:
+            <span class="item-quantity" th:text="${item.quantity}" />
+        </li>
+    </ul>
+
+    <a data-th-href="@{/}">Back to shop</a>.
+</div>
+
+</body>
+</html>

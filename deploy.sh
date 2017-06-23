@@ -9,4 +9,4 @@ echo "
     To cancel, press Ctrl-C.
 "
 
-java -jar build/libs/com.teamlab.shopchallenge.jar > ./boot.log 2>&1
+java -jar build/libs/shopchallenge-1.0.jar > ./boot.log 2>&1

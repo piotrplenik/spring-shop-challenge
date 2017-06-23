@@ -12,8 +12,12 @@ repositories {
 }
 
 apply plugin: 'java'
-apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'shopchallenge'
+    version =  '1.0'
+}
 
 // JDK 8
 sourceCompatibility = 1.8

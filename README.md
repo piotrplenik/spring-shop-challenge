@@ -1,5 +1,8 @@
 # Sample Java8-Spring challenge task
 
+Demo deployed on Kubernetes + Google Cloud Platform:
+http://104.154.213.183:8080/.
+
 ## Technologies Used:
  - Java 8
  - Spring Boot

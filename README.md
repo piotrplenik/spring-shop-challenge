@@ -1,7 +1,7 @@
 # Sample Java8-Spring challenge task
 
-Demo deployed on Kubernetes + Google Cloud Platform:
-http://104.154.213.183:8080/.
+[Demo on Google Cloud Platform](https://central-phalanx-408.appspot.com/)
+(from branch: [`docker`](https://github.com/jupeter/spring-shop-challenge/tree/docker)).
 
 ## Technologies Used:
  - Java 8
@@ -69,3 +69,14 @@ public void updateItems() {
 ```
 
 REST data loaded using `org.springframework.web.client.RestTemplate`.
+
+## Extra stuff
+
+### Configure docker
+
+Run command:
+```
+./gradlew build buildDocker
+```
+
+Deploy

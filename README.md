@@ -74,9 +74,12 @@ REST data loaded using `org.springframework.web.client.RestTemplate`.
 
 ### Configure docker
 
-Run command:
 ```
 ./gradlew build buildDocker
 ```
 
-Deploy
+Deploy to Google Cloud:
+```
+./gradlew appengineDeploy
+```
+

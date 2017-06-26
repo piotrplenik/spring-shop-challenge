@@ -1,6 +1,6 @@
 # Sample Java8-Spring challenge task
 
-[Demo on Google Cloud Platform](https://central-phalanx-408.appspot.com/)
+[Demo on Google Cloud Platform](http://spring-challenge1.pplenik.tk/)
 (from branch: [`docker`](https://github.com/jupeter/spring-shop-challenge/tree/docker)).
 
 ## Technologies Used:

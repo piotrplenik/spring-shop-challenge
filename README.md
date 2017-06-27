@@ -45,18 +45,14 @@ Of course much easier is implement Angular + Rest on server side - but then is l
 ### How would I implement persistence layer
 
 I would choose Spring Data JPA.
-About details:
- - enable "Spring Data JPA" in Gradle
- - add Persistence Annotations to Item class
- - create new ItemRepository interface that extends CrudRepository and ItemDAO
- - change bean configuration from ItemMemory to ItemRepository
+Implementation: [branch spring-data](https://github.com/jupeter/spring-shop-challenge/compare/spring-data)
 
 ### How long did it take you to complete the assignment
 
  - Choose technology: 2h
- - Implementation: 4h
- - Compile and deploy scripts: 1h
- - prepare readme file: 1h
+ - Implementation: ~3h
+ - Compile and deploy scripts: <1h
+ - prepare readme file: <1h
 
 ## How would you modify the app if the list of items and their availability should be downloaded daily via REST API?
 

@@ -10,17 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.teamlab.shopchallenge.entity.Item;
-import pl.teamlab.shopchallenge.repository.ItemDAO;
+import pl.teamlab.shopchallenge.repository.ItemRepository;
 
 
 @Component
 public class InitialStateRunner implements CommandLineRunner {
     @Autowired
-    private ItemDAO itemRepository;
-    
+    private ItemRepository itemRepository;
+
     @Override
     public void run(String... args) throws Exception {
-        itemRepository.add(new Item(1L, "Item A", 20));
-        itemRepository.add(new Item(2L, "Item B", 10));
+        itemRepository.save(new Item(1L, "Item A", 20));
+        itemRepository.save(new Item(2L, "Item B", 10));
     }
 }

@@ -12,15 +12,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.teamlab.shopchallenge.checkout.Checkout;
-import pl.teamlab.shopchallenge.repository.ItemDAO;
+import pl.teamlab.shopchallenge.repository.ItemRepository;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @Controller("/")
 public class DefaultController {
 
     @Autowired
-    private ItemDAO itemRepository;
+    private ItemRepository itemRepository;
 
 
     @GetMapping("/")
@@ -39,9 +40,19 @@ public class DefaultController {
             return "index";
         }
 
-        checkout.takeOffQuantity();
+        takeOff(checkout);
 
         return "submit";
+    }
+
+    @Transactional
+    private void takeOff(Checkout checkout) {
+        checkout.takeOffQuantity();
+
+        for(Checkout.CheckoutItem item : checkout.getItems()) {
+            itemRepository.save(item.getItem());
+        }
+
     }
 
     @ModelAttribute

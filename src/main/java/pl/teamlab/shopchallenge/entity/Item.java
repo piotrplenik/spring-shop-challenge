@@ -6,11 +6,19 @@
  */
 package pl.teamlab.shopchallenge.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Item {
 
-    private Long id;
+    private @Id @GeneratedValue Long id;
     private String name;
     private int quantity;
+
+    public Item() {
+    }
 
     public Item(Item item) {
         this(item.id, item.name, item.quantity);

@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class Checkout {
 
-    private class CheckoutItem {
+    public class CheckoutItem {
 
         private Item item;
 

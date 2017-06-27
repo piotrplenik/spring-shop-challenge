@@ -40,7 +40,7 @@ public class ItemMemory implements ItemDAO {
     }
 
     @Override
-    public void remove(Integer id) {
+    public void remove(Long id) {
         Item item = get(id);
 
         if(item != null) {
@@ -54,10 +54,10 @@ public class ItemMemory implements ItemDAO {
     }
 
     @Override
-    public Item get(Integer id) {
+    public Item get(Long id) {
         Optional<Item> first = items
                 .stream()
-                .filter(i -> (i != null) && (i.getId() == id))
+                .filter(i -> (i != null) && (i.getId().equals(id)))
                 .findFirst();
 
         return first.orElse(null);

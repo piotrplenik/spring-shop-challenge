@@ -8,5 +8,5 @@ package pl.teamlab.shopchallenge.repository;
 
 import pl.teamlab.shopchallenge.entity.Item;
 
-public interface ItemDAO extends SimpleDAO<Item, Integer> {
+public interface ItemDAO extends SimpleDAO<Item, Long> {
 }

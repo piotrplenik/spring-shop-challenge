@@ -8,7 +8,7 @@ package pl.teamlab.shopchallenge.entity;
 
 public class Item {
 
-    private int id;
+    private Long id;
     private String name;
     private int quantity;
 
@@ -16,7 +16,7 @@ public class Item {
         this(item.id, item.name, item.quantity);
     }
 
-    public Item(int id, String name, int quantity) {
+    public Item(Long id, String name, int quantity) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -56,7 +56,7 @@ public class Item {
         );
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 }

@@ -16,11 +16,11 @@ import pl.teamlab.shopchallenge.repository.ItemDAO;
 @Component
 public class InitialStateRunner implements CommandLineRunner {
     @Autowired
-    ItemDAO itemRepository;
+    private ItemDAO itemRepository;
     
     @Override
     public void run(String... args) throws Exception {
-        itemRepository.add(new Item(1, "Item A", 20));
-        itemRepository.add(new Item(2, "Item B", 10));
+        itemRepository.add(new Item(1L, "Item A", 20));
+        itemRepository.add(new Item(2L, "Item B", 10));
     }
 }

@@ -1,22 +1,37 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+        classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'
+        classpath('se.transmode.gradle:gradle-docker:1.2')
     }
 }
 
+group = 'pl.teamlab.shopchallenge'
+version = '1.0'
+
 repositories {
+    maven {
+        url 'https://maven-central.storage.googleapis.com'             // Google's mirror of Maven Central
+    }
+
     jcenter()
+    mavenCentral()
 }
 
 apply plugin: 'java'
+apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'docker'
+apply plugin: 'com.google.cloud.tools.appengine'
+
 
 jar {
     baseName = 'shopchallenge'
-    version =  '1.0'
+    version =  "${version}"
 }
 
 // JDK 8
@@ -25,7 +40,31 @@ targetCompatibility = 1.8
 
 
 dependencies {
+    providedCompile('com.google.appengine:appengine:+')
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
     testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+appengine {
+    deploy {   // deploy configuration
+        stopPreviousVersion = true  // default - stop the current version
+        promote = true              // default - & make this the current version
+        project = 'central-phalanx-408'
+    }
+
+}
+
+
+task buildDocker(type: Docker, dependsOn: build) {
+    push = true
+    applicationName = jar.baseName
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
 }

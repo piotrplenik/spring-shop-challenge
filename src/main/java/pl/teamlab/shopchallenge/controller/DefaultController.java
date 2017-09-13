@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.teamlab.shopchallenge.checkout.Checkout;
 import pl.teamlab.shopchallenge.repository.ItemDAO;
+import pl.teamlab.shopchallenge.startup.InitialStateRunner;
 
 import javax.validation.Valid;
 
@@ -21,6 +22,9 @@ public class DefaultController {
 
     @Autowired
     private ItemDAO itemRepository;
+
+    @Autowired
+    InitialStateRunner initialStateRunner;
 
 
     @GetMapping("/")
@@ -42,6 +46,18 @@ public class DefaultController {
         checkout.takeOffQuantity();
 
         return "submit";
+    }
+
+    @GetMapping("/reset")
+    public String reset() {
+        try {
+            initialStateRunner.clean();
+            initialStateRunner.run();
+        } catch (Exception e) {
+            // ignore
+        }
+
+        return "redirect:/";
     }
 
     @ModelAttribute
